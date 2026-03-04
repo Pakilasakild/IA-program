@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.teachers.QuizTableController">
+   <children>
+      <Text layoutX="40.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quizzes">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Text>
+
+      <ComboBox fx:id="tagSelect" layoutX="379.0" layoutY="49.0" prefWidth="150.0" />
+      <Text layoutX="379.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose tag">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+
+      <TreeTableView fx:id="quizTreeTableView" layoutX="40.0" layoutY="95.0" prefHeight="280.0" prefWidth="520.0">
+        <columns>
+          <TreeTableColumn fx:id="quizNameColumn" prefWidth="170.0" text="Quiz" />
+          <TreeTableColumn fx:id="quizTagsColumn" prefWidth="270.0" text="Tags" />
+          <TreeTableColumn fx:id="editColumn" prefWidth="79.0" text="Edit" />
+        </columns>
+      </TreeTableView>
+   </children>
+</AnchorPane>

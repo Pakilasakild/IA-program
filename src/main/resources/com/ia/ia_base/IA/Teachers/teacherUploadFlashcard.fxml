@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.teachers.ImportFlashcardController">
+   <children>
+      <Text layoutX="50.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload file">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="selectFileBTN" layoutX="50.0" layoutY="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Select file">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="fileContentsTableView" layoutX="260.0" layoutY="70.0" prefHeight="300.0" prefWidth="300.0">
+        <columns>
+          <TableColumn fx:id="column1" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="column2" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="uploadBTN" layoutX="50.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Upload">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text layoutX="340.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File contents">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="cancelImportBTN" layoutX="50.0" layoutY="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Cancel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

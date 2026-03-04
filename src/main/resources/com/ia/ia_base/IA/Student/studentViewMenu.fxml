@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.students.StudentMainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+            <Menu mnemonicParsing="false" text="Application">
+              <items>
+                  <Menu mnemonicParsing="false" text="Account">
+                    <items>
+                      <MenuItem fx:id="changePasswordMenu" mnemonicParsing="false" text="Change Password" />
+                    </items>
+                  </Menu>
+                <MenuItem fx:id="logoutMenu" mnemonicParsing="false" text="Logout" />
+                  <MenuItem fx:id="quitMenu" mnemonicParsing="false" text="Quit" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Flashcards">
+            <items>
+                  <MenuItem fx:id="viewFlashcardsMenu" mnemonicParsing="false" text="View Flashcards" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Quizzes">
+            <items>
+              <MenuItem fx:id="viewQuizzesMenu" mnemonicParsing="false" text="View Quizzes" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+    <left>
+        <fx:include source="../mainViewLeftWelcome.fxml" />
+    </left>
+</BorderPane>

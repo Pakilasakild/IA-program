@@ -1,0 +1,35 @@
+.background {
+    -fx-background-color: rgb(45, 85, 85);
+}
+.BTNs {
+    -fx-background-color: rgb(45, 68, 68);
+    -fx-font-family: "Marlett";
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+.welcome{
+    -fx-font-family: "Marlett";
+    -fx-font-size: 26px;
+    -fx-text-fill: white;
+}
+.numbers{
+    -fx-font-family: "Marlett";
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+}
+.forgotPassword {
+    -fx-font-family: "Impact";
+    -fx-font-size: 40px;
+}
+.factFlux {
+    -fx-font-family: "Impact";
+    -fx-font-size: 60px;
+}
+.logsignin {
+    -fx-font-family: "Marlett";
+    -fx-font-size: 40px;
+}
+.suggestedFields {
+    -fx-font-family: "Marlett";
+    -fx-font-size: 12px;
+}

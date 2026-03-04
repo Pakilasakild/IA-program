@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="470.0" styleClass="background" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.LoginController">
+   <children>
+      <Text layoutX="181.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="logsignin" text="Login">
+         <font>
+            <Font name="Marlett" size="40.0" />
+         </font>
+      </Text>
+      <TextField fx:id="emailField" layoutX="125.0" layoutY="260.0" prefHeight="20.0" prefWidth="200.0" promptText="Email adress" styleClass="suggestedFields">
+         <font>
+            <Font name="Marlett" size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="logInBTN" layoutX="200.0" layoutY="351.0" mnemonicParsing="false" prefWidth="50.0" styleClass="BTNs" stylesheets="@../styles/login.css" text="Log in" textFill="WHITE" />
+      <RadioButton fx:id="studentRadio" layoutX="107.0" layoutY="220.0" mnemonicParsing="false" prefWidth="100.0" text="I am a Student" textFill="WHITE">
+         <font>
+            <Font name="Marlett" size="12.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="accountTypeGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="teacherRadio" layoutX="232.0" layoutY="220.0" mnemonicParsing="false" prefWidth="100.0" text="I am a Teacher" textFill="WHITE" toggleGroup="$accountTypeGroup">
+         <font>
+            <Font name="Marlett" size="12.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="forgotPasswordBTN" layoutX="52.0" layoutY="351.0" mnemonicParsing="false" styleClass="BTNs" stylesheets="@../styles/login.css" text="Forgot Password" textFill="WHITE" />
+      <Text layoutX="125.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="factFlux" text="FactFlux">
+         <font>
+            <Font name="Impact" size="60.0" />
+         </font>
+      </Text>
+      <Button fx:id="createNewAccountBTN" layoutX="296.0" layoutY="351.0" mnemonicParsing="false" prefWidth="124.0" styleClass="BTNs" stylesheets="@../styles/login.css" text="Create new account" textFill="WHITE" />
+      <PasswordField fx:id="passwordField" layoutX="125.0" layoutY="300.0" prefHeight="20.0" prefWidth="200.0" promptText="Password" styleClass="suggestedFields">
+         <font>
+            <Font name="Marlett" size="12.0" />
+         </font>
+      </PasswordField>
+   </children>
+</AnchorPane>

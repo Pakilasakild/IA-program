@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="quizSessionWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.students.QuizSessionController">
+   <children>
+      <Text fx:id="questionText" layoutX="60.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="485.89453125">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="answerRB1" layoutX="60.0" layoutY="110.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="179.0" text="RadioButton">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="answerRB2" layoutX="60.0" layoutY="150.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="179.0" text="RadioButton">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="answerRB3" layoutX="60.0" layoutY="190.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="179.0" text="RadioButton">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="answerRB4" layoutX="60.0" layoutY="230.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="179.0" text="RadioButton">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="nextQuestionBTN" layoutX="60.0" layoutY="310.0" mnemonicParsing="false" text="Next question" />
+      <Button fx:id="lastQuestionBTN" layoutX="194.0" layoutY="310.0" mnemonicParsing="false" text="Go to last question" />
+   </children>
+</AnchorPane>
