@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `quiz_questions`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `quiz_questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `role_id` int NOT NULL,
-  `is_blocked` tinyint(1) DEFAULT '0',
-  `must_change_password` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `quiz_questions` (
+  `quiz_id` int NOT NULL,
+  `question_id` int NOT NULL,
+  `position` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`quiz_id`,`question_id`),
+  KEY `idx_quiz_questions_question_id` (`question_id`),
+  CONSTRAINT `fk_qq_question` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_qq_quiz` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `quiz_questions`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (4,'v4k4@gymn.edu','$2a$10$jvTye6AJGXgsvyyE7beILeJMo8Um3/aWEWf290q2WrIZBK2nAhX72',2,0,0),(5,'d@gmail.com','$2a$10$yM2YNRBF72xWRZGjsOVvbuoFXJjNOkDdxGoZRke2IkJTDLCE74lNe',1,0,0),(6,'student@gmail.com','$2a$10$W99aoFAcKr1u5ERGHqlUOuwxIzMgKrbSckVkmOg9c3L3tXX0CQ4bG',2,0,0),(7,'demo@demo.com','$2a$10$Nmto1PZGAwIMhobgXzplZ.Vkpb4QsYN5gA7S.mg7yPkbxkxWwr97y',1,0,0),(8,'demos@demo.com','$2a$10$cVw.VmLEGsW6vksAITRiHO9KTkFq2UcptHOqgIKAmn/mCSkGoNi5.',2,0,0);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `quiz_questions` WRITE;
+/*!40000 ALTER TABLE `quiz_questions` DISABLE KEYS */;
+INSERT INTO `quiz_questions` VALUES (5,4,1),(8,3,1),(8,4,2),(8,5,3);
+/*!40000 ALTER TABLE `quiz_questions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

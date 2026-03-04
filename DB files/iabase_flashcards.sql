@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: iabase
+-- Host: localhost    Database: iabase
 -- ------------------------------------------------------
 -- Server version	8.0.44
 
@@ -26,9 +26,9 @@ CREATE TABLE `flashcards` (
   `id` int NOT NULL AUTO_INCREMENT,
   `question` varchar(255) NOT NULL,
   `answer` varchar(255) NOT NULL,
-  `active` tinyint DEFAULT NULL,
+  `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `flashcards` (
 
 LOCK TABLES `flashcards` WRITE;
 /*!40000 ALTER TABLE `flashcards` DISABLE KEYS */;
-INSERT INTO `flashcards` VALUES (1,'Discriminant formula','b^2-4ac',0);
+INSERT INTO `flashcards` VALUES (4,'Testas','tikras',0),(5,'Q1','A1',0),(6,'Q2','A2',1),(7,'Q3','A3',1),(13,'demo klausimas','atsakymas',1);
 /*!40000 ALTER TABLE `flashcards` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-01-06  9:38:17
+-- Dump completed on 2026-03-04 19:22:43
