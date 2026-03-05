@@ -46,17 +46,6 @@ public class LoginController extends BaseController {
     private void setupButtonActions() {
         logInBTN.setOnAction(e -> handleLogin());
         createNewAccountBTN.setOnAction(e -> handleRegisterLink());
-        forgotPasswordBTN.setOnAction(e -> handleForgotPassword());
-    }
-
-    private void handleForgotPassword() {
-        changeScene("IA/forgotPassword.fxml");
-        if (stage != null) {
-            stage.setTitle("Forgot Password");
-            stage.setResizable(false);
-            stage.setWidth(420);
-            stage.setHeight(300);
-        }
     }
 
     @FXML
@@ -96,17 +85,6 @@ public class LoginController extends BaseController {
                 return;
             }
 
-            // If must change password -> force modal popup BEFORE entering the app
-            if (user.isMustChangePassword()) {
-                AlertManager.showWarning("Password Change Required", "You must change your password to continue.");
-                boolean changed = openMustChangePasswordPopup(user);
-                if (!changed) {
-                    AlertManager.showError("Password Change Required", "You must change your password to continue.");
-                    return;
-                }
-            }
-
-            // Now login proceeds normally
             SessionManager.getInstance().setCurrentUser(user);
 
             if (role.equals("student")) {
@@ -130,49 +108,6 @@ public class LoginController extends BaseController {
         } catch (SQLException e) {
             AlertManager.showError("Database Error", "Failed to connect to database: " + e.getMessage());
             e.printStackTrace();
-        }
-    }
-
-    /**
-     * Opens mustChangePassword.fxml as a blocking modal.
-     * Returns true only if password was successfully changed and persisted to DB.
-     */
-    private boolean openMustChangePasswordPopup(User user) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/ia/ia_base/IA/mustChangePassword.fxml")
-            );
-            Parent root = loader.load();
-
-            MustChangePasswordController controller = loader.getController();
-            if (controller == null) {
-                AlertManager.showError("Error", "mustChangePassword.fxml has no controller wired.");
-                return false;
-            }
-
-            // Create modal stage
-            Stage popup = new Stage();
-            popup.setTitle("Change Password Required");
-            popup.initModality(Modality.WINDOW_MODAL);
-            if (stage != null) {
-                popup.initOwner(stage);
-            }
-            popup.setResizable(false);
-            popup.setScene(new Scene(root));
-
-            // Give controller the stage and user
-            controller.setStage(popup);
-            controller.setUser(user);
-
-            // Block until user finishes
-            popup.showAndWait();
-
-            return controller.isPasswordChanged();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertManager.showError("Error", "Could not open must change password window.");
-            return false;
         }
     }
 
