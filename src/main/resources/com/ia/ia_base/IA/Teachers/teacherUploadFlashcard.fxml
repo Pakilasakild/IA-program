@@ -9,9 +9,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.teachers.ImportFlashcardController">
    <children>
-      <Text layoutX="50.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload file">
+      <Text layoutX="20.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload file">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Text>
       <Button fx:id="selectFileBTN" layoutX="50.0" layoutY="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Select file">

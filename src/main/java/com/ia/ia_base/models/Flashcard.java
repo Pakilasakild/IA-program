@@ -59,6 +59,7 @@ public class Flashcard {
     public void setId(int id) {
         this.id = id;
     }
+
     public BooleanProperty activeProperty() {
         return active;
     }

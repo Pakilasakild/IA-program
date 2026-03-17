@@ -13,12 +13,12 @@
       </Text>
       <Text fx:id="flashcardAmountText" fill="WHITE" layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numbers" text="Amount of flashcards">
          <font>
-            <Font size="20.0" />
+            <Font size="21.0" />
          </font>
       </Text>
       <Text fx:id="quizAmountText" fill="WHITE" layoutX="14.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numbers" text="Amount of quizzes">
          <font>
-            <Font size="20.0" />
+            <Font size="21.0" />
          </font>
       </Text>
    </children>

@@ -29,6 +29,7 @@ public abstract class User {
     public abstract boolean canManageUsers();
 
     public abstract boolean canManageCategories();
+
     public abstract boolean isStudent();
 
     public String getEmail() {

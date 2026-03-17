@@ -6,6 +6,7 @@ import com.ia.ia_base.models.Flashcard;
 import com.ia.ia_base.util.AlertManager;
 import com.ia.ia_base.util.FlashcardReloadBus;
 import com.ia.ia_base.util.InformationReloadBus;
+import com.ia.ia_base.util.TagReloadBus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,7 +30,6 @@ public class FlashcardTableController extends BaseController {
     private final ObservableList<Flashcard> flashcardsObs = FXCollections.observableArrayList();
     private final ObservableList<String> tagOptions = FXCollections.observableArrayList();
 
-    // Holds the full list from DB; table shows a filtered view of this
     private List<Flashcard> allFlashcards = new ArrayList<>();
 
     @FXML public TableView<Flashcard> flashTableTeach;
@@ -43,6 +43,9 @@ public class FlashcardTableController extends BaseController {
 
     private FlashcardDAO flashcardDAO;
 
+    private final Runnable flashcardReloadHandler = this::reloadTable;
+    private final Runnable tagReloadHandler = this::reloadTable;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         flashcardDAO = new FlashcardDAO();
@@ -50,18 +53,24 @@ public class FlashcardTableController extends BaseController {
         setupColumns();
         setupTagFilter();
 
-        flashTableTeach.setEditable(true); // REQUIRED for checkbox clicking
+        flashTableTeach.setEditable(true);
         flashTableTeach.setItems(flashcardsObs);
 
         reloadTable();
 
-        // remote refresh (create/edit/import etc.)
-        FlashcardReloadBus.register(this::reloadTable);
+        FlashcardReloadBus.register(flashcardReloadHandler);
+        TagReloadBus.register(tagReloadHandler);
 
-        // avoid duplicate listeners if the view is reopened many times
         flashTableTeach.sceneProperty().addListener((obs, oldScene, newScene) -> {
-            if (newScene != null && newScene.getWindow() != null) {
-                newScene.getWindow().setOnHidden(e -> FlashcardReloadBus.unregister(this::reloadTable));
+            if (newScene != null) {
+                newScene.windowProperty().addListener((obsWin, oldWin, newWin) -> {
+                    if (newWin != null) {
+                        newWin.setOnHidden(e -> {
+                            FlashcardReloadBus.unregister(flashcardReloadHandler);
+                            TagReloadBus.unregister(tagReloadHandler);
+                        });
+                    }
+                });
             }
         });
     }
@@ -69,7 +78,6 @@ public class FlashcardTableController extends BaseController {
     private void setupTagFilter() {
         tagSelect.setItems(tagOptions);
 
-        // Nice display
         tagSelect.setButtonCell(new ListCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -86,10 +94,8 @@ public class FlashcardTableController extends BaseController {
             }
         });
 
-        // When tag changes -> apply filter
         tagSelect.valueProperty().addListener((obs, oldVal, newVal) -> applyTagFilter());
 
-        // default selection
         if (tagSelect.getValue() == null) {
             tagSelect.getSelectionModel().select(ALL_TAGS);
         }
@@ -99,17 +105,12 @@ public class FlashcardTableController extends BaseController {
         try {
             List<Flashcard> flashcards = flashcardDAO.findAllWithTags();
 
-            // attach active listeners for persistence
             for (Flashcard fc : flashcards) {
                 attachActiveListener(fc);
             }
 
             allFlashcards = flashcards;
-
-            // rebuild tag dropdown based on all cards
             rebuildTagOptions(allFlashcards);
-
-            // apply filter to show in table
             applyTagFilter();
 
         } catch (SQLException e) {
@@ -124,7 +125,6 @@ public class FlashcardTableController extends BaseController {
             previouslySelected = ALL_TAGS;
         }
 
-        // unique sorted tag names
         SortedSet<String> tags = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
         for (Flashcard fc : flashcards) {
             List<String> t = fc.getTags();
@@ -138,7 +138,6 @@ public class FlashcardTableController extends BaseController {
         tagOptions.add(ALL_TAGS);
         tagOptions.addAll(tags);
 
-        // restore selection if possible
         if (tagOptions.contains(previouslySelected)) {
             tagSelect.getSelectionModel().select(previouslySelected);
         } else {
@@ -250,7 +249,7 @@ public class FlashcardTableController extends BaseController {
             editCtrl.setFlashcard(flashcard);
 
             editCtrl.setOnSaved(() -> {
-                reloadTable(); // <- keeps filter + tags updated too
+                reloadTable();
                 flashTableTeach.refresh();
             });
 
@@ -271,10 +270,7 @@ public class FlashcardTableController extends BaseController {
         try {
             if (AlertManager.showConfirmation("Delete flashcard", "Are you sure you want to delete this flashcard?", "")) {
                 flashcardDAO.delete(flashcard.getId());
-
-                // reload to keep filter + tag list consistent
                 reloadTable();
-
                 InformationReloadBus.requestReload();
             }
         } catch (SQLException e) {

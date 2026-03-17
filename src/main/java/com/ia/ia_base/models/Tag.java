@@ -4,12 +4,12 @@ public class Tag {
     private int id;
     private String tagName;
 
-    public String getTagName() {
-        return tagName;
+    public Tag(String tag) {
+        this.tagName = tag;
     }
 
-    public void setTagName(String tag) {
-        this.tagName = tag;
+    public String getTagName() {
+        return tagName;
     }
 
     public int getId() {
@@ -18,10 +18,6 @@ public class Tag {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Tag(String tag) {
-        this.tagName = tag;
     }
 
     @Override
