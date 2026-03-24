@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="editQuestion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.teachers.EditQuestionController">
+   <children>
+      <Text layoutX="40.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit question">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Text>
+      <Button fx:id="commitBTN" layoutX="41.0" layoutY="348.0" mnemonicParsing="false" text="Commit changes" />
+      <Button fx:id="cancelBTN" layoutX="313.0" layoutY="348.0" mnemonicParsing="false" text="Cancel" />
+      <ComboBox fx:id="chooseQuestionCombo" layoutX="41.0" layoutY="82.0" prefHeight="51.0" prefWidth="298.0" promptText="Select question" />
+      <TextField fx:id="questionTextField" layoutX="41.0" layoutY="160.0" prefWidth="250.0" promptText="Question" />
+      <RadioButton fx:id="ansOneRB" layoutX="41.0" layoutY="256.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="117.0" text="Answer One" />
+      <RadioButton fx:id="ansThrRB" layoutX="41.0" layoutY="293.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="117.0" text="Answer Three" />
+      <RadioButton fx:id="ansTwoRB" layoutX="198.0" layoutY="256.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="117.0" text="Answer Two" />
+      <RadioButton fx:id="ansFouRB" layoutX="198.0" layoutY="293.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="117.0" text="Answer Four" />
+      <Text layoutX="41.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correct Answer">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

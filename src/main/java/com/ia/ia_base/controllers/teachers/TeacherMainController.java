@@ -1,16 +1,12 @@
 package com.ia.ia_base.controllers.teachers;
 
+import com.ia.ia_base.controllers.BaseController;
 import com.ia.ia_base.database.dao.QuestionDAO;
-import com.ia.ia_base.database.dao.QuizDAO;
 import com.ia.ia_base.models.Question;
-import com.ia.ia_base.models.Quiz;
 import com.ia.ia_base.util.AlertManager;
-import com.ia.ia_base.util.SessionManager;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
-import com.ia.ia_base.controllers.BaseController;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -46,6 +42,10 @@ public class TeacherMainController extends BaseController {
     @FXML
     public MenuItem deleteTagMenu;
     public QuestionDAO questionDAO = new QuestionDAO();
+    @FXML
+    public MenuItem editQuizQuestion;
+    @FXML
+    public MenuItem deleteQuizQuestionMenu;
 
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
@@ -93,11 +93,9 @@ public class TeacherMainController extends BaseController {
         addQuizMenu.setOnAction(e -> {
             try {
                 List<Question> questions = questionDAO.findAll();
-                if (questions.isEmpty())
-                {
+                if (questions.isEmpty()) {
                     AlertManager.showError("No questions", "Create at least one question before creating a quiz.");
-                }
-                else {
+                } else {
                     openNewWindow("/com/ia/ia_base/IA/Teachers/createQuiz.fxml", "Create new quiz");
                 }
             } catch (SQLException ex) {
@@ -115,6 +113,12 @@ public class TeacherMainController extends BaseController {
         });
         deleteTagMenu.setOnAction(e -> {
             openNewWindow("/com/ia/ia_base/IA/Teachers/deleteTag.fxml", "Delete tag");
+        });
+        editQuizQuestion.setOnAction(e ->{
+            openNewWindow("/com/ia/ia_base/IA/Teachers/editQuestion.fxml", "Edit question");
+        });
+        deleteQuizQuestionMenu.setOnAction(e ->{
+            openNewWindow("/com/ia/ia_base/IA/Teachers/deleteQuizQuestion.fxml", "Delete question");
         });
     }
 }

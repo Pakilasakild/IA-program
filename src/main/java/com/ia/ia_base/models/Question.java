@@ -13,6 +13,26 @@ public class Question {
         this.question = question;
     }
 
+    public void setFirstAnswer(String firstAnswer) {
+        this.firstAnswer = firstAnswer;
+    }
+
+    public void setSecondAnswer(String secondAnswer) {
+        this.secondAnswer = secondAnswer;
+    }
+
+    public void setThirdAnswer(String thirdAnswer) {
+        this.thirdAnswer = thirdAnswer;
+    }
+
+    public void setFourthAnswer(String fourthAnswer) {
+        this.fourthAnswer = fourthAnswer;
+    }
+
+    public void setCorrectAnswer(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
     public Question(String question, String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, int correctAnswer) {
         this.question = question;
         this.firstAnswer = firstAnswer;
