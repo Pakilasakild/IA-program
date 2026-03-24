@@ -1,5 +1,9 @@
 package com.ia.ia_base.controllers.teachers;
 
+import com.ia.ia_base.database.dao.QuestionDAO;
+import com.ia.ia_base.database.dao.QuizDAO;
+import com.ia.ia_base.models.Question;
+import com.ia.ia_base.models.Quiz;
 import com.ia.ia_base.util.AlertManager;
 import com.ia.ia_base.util.SessionManager;
 import javafx.application.Platform;
@@ -11,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 
 public class TeacherMainController extends BaseController {
     @FXML
@@ -39,6 +45,7 @@ public class TeacherMainController extends BaseController {
     public MenuItem addTagMenu;
     @FXML
     public MenuItem deleteTagMenu;
+    public QuestionDAO questionDAO = new QuestionDAO();
 
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
@@ -84,7 +91,18 @@ public class TeacherMainController extends BaseController {
             }
         });
         addQuizMenu.setOnAction(e -> {
-            openNewWindow("/com/ia/ia_base/IA/Teachers/createQuiz.fxml", "Create new quiz");
+            try {
+                List<Question> questions = questionDAO.findAll();
+                if (questions.isEmpty())
+                {
+                    AlertManager.showError("No questions", "Create at least one question before creating a quiz.");
+                }
+                else {
+                    openNewWindow("/com/ia/ia_base/IA/Teachers/createQuiz.fxml", "Create new quiz");
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         addQuizQuestionMenu.setOnAction(e -> {
             openNewWindow("/com/ia/ia_base/IA/Teachers/createQuizQuestion.fxml", "Create new quiz question");

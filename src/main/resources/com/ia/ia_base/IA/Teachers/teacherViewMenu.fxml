@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.teachers.TeacherMainController">
+<BorderPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ia.ia_base.controllers.teachers.TeacherMainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -30,9 +30,19 @@
           <Menu mnemonicParsing="false" text="Quizzes">
             <items>
               <MenuItem fx:id="viewQuizzesMenu" mnemonicParsing="false" text="View Quizzes" />
-                  <MenuItem fx:id="addQuizMenu" mnemonicParsing="false" text="Add New Quiz" />
-                  <MenuItem fx:id="addQuizQuestionMenu" mnemonicParsing="false" text="Add New Quiz Question" />
-                  <MenuItem fx:id="deleteQuizMenu" mnemonicParsing="false" text="Delete Quiz" />
+                  <Menu mnemonicParsing="false" text="Quiz">
+                    <items>
+                        <MenuItem fx:id="addQuizMenu" mnemonicParsing="false" text="Add New Quiz" />
+                        <MenuItem fx:id="deleteQuizMenu" mnemonicParsing="false" text="Delete Quiz" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Quiz questions">
+                     <items>
+                        <MenuItem fx:id="addQuizQuestionMenu" mnemonicParsing="false" text="Add New Quiz Question" />
+                        <MenuItem fx:id="editQuizQuestion" mnemonicParsing="false" text="Edit Quiz Question" />
+                        <MenuItem fx:id="deleteQuizQuestionMenu" mnemonicParsing="false" text="Delete Quiz Question" />
+                     </items>
+                  </Menu>
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Tags">

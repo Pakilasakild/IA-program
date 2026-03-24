@@ -28,7 +28,6 @@ public class EditFlashcardController extends BaseController {
     private final TagDAO tagDAO = new TagDAO();
     private final FlashcardTagDAO flashcardTagDAO = new FlashcardTagDAO();
     private final ObservableList<Tag> allTags = FXCollections.observableArrayList();
-    // tagId -> checked?
     private final Map<Integer, BooleanProperty> checkedByTagId = new HashMap<>();
     @FXML
     public Button commitChangesBTN;
@@ -109,33 +108,39 @@ public class EditFlashcardController extends BaseController {
 
         try {
             // 1) Update question/answer
-            flashcard.setQuestion(questionField.getText());
-            flashcard.setAnswer(answerField.getText());
+            if (questionField.getText().isEmpty() || answerField.getText().isEmpty())
+            {
+                AlertManager.showError("One or more fields empty", "Please fill in all the fields.");
+            }
+            else{
+                flashcard.setQuestion(questionField.getText());
+                flashcard.setAnswer(answerField.getText());
 
-            FlashcardDAO flashcardDAO = new FlashcardDAO();
-            flashcardDAO.update(flashcard);
+                FlashcardDAO flashcardDAO = new FlashcardDAO();
+                flashcardDAO.update(flashcard);
 
-            // 2) Collect checked tags and update junction table
-            List<Integer> selectedTagIds = allTags.stream()
-                    .filter(t -> checkedProperty(t).get())
-                    .map(Tag::getId)
-                    .toList();
+                // 2) Collect checked tags and update junction table
+                List<Integer> selectedTagIds = allTags.stream()
+                        .filter(t -> checkedProperty(t).get())
+                        .map(Tag::getId)
+                        .toList();
 
-            flashcardTagDAO.setTagsForFlashcard(flashcard.getId(), selectedTagIds);
+                flashcardTagDAO.setTagsForFlashcard(flashcard.getId(), selectedTagIds);
 
-            // 3) Update in-memory tag names list (so table column can show it after reload)
-            ArrayList<String> selectedTagNames = new ArrayList<>(
-                    allTags.stream()
-                            .filter(t -> checkedProperty(t).get())
-                            .map(Tag::getTagName)
-                            .toList()
-            );
-            flashcard.setTags(selectedTagNames);
+                // 3) Update in-memory tag names list (so table column can show it after reload)
+                ArrayList<String> selectedTagNames = new ArrayList<>(
+                        allTags.stream()
+                                .filter(t -> checkedProperty(t).get())
+                                .map(Tag::getTagName)
+                                .toList()
+                );
+                flashcard.setTags(selectedTagNames);
 
-            if (onSaved != null) onSaved.run();
+                if (onSaved != null) onSaved.run();
 
-            ((Stage) commitChangesBTN.getScene().getWindow()).close();
+                ((Stage) commitChangesBTN.getScene().getWindow()).close();
 
+            }
         } catch (SQLException e) {
             AlertManager.showError("Database Error", e.getMessage());
         }
