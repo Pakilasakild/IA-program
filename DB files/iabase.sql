@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: iabase
+-- Host: localhost    Database: iabase
 -- ------------------------------------------------------
 -- Server version	8.0.44
 
@@ -38,7 +38,7 @@ CREATE TABLE `flashcard_tags` (
 
 LOCK TABLES `flashcard_tags` WRITE;
 /*!40000 ALTER TABLE `flashcard_tags` DISABLE KEYS */;
-INSERT INTO `flashcard_tags` VALUES (5,1),(6,1),(4,2),(5,2),(7,2);
+INSERT INTO `flashcard_tags` VALUES (27,4),(28,4),(32,4),(21,5),(22,5),(27,5),(32,5),(14,6),(15,6),(16,6);
 /*!40000 ALTER TABLE `flashcard_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `flashcards` (
   `answer` varchar(255) NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `flashcards` (
 
 LOCK TABLES `flashcards` WRITE;
 /*!40000 ALTER TABLE `flashcards` DISABLE KEYS */;
-INSERT INTO `flashcards` VALUES (4,'Testas','tikras',0),(5,'Q1','A1',0),(6,'Q2','A2',1),(7,'Q3','A3',1),(13,'demo klausimas','atsakymas',1);
+INSERT INTO `flashcards` VALUES (14,'What does CPU stand for?','Central Processing Unit.',0),(15,'Which data structure follows the Last In, First Out (LIFO) principle?','A stack.',0),(16,'What binary value does the boolean condition true usually correspond to?','1.',0),(17,'What is the main purpose of RAM in a computer?','To temporarily store data and programs currently in use.',0),(18,'What does HTML stand for?','HyperText Markup Language.',0),(19,'Which algorithmic notation is commonly used to describe time complexity?','Big-O notation.',0),(20,'In networking, what does IP stand for?','Internet Protocol.',0),(21,'What unit is used to measure electric current?','The ampere (A).',0),(22,'What is Newton\'s second law of motion?','Force equals mass times acceleration (F = ma).',0),(23,'What is the approximate speed of light in a vacuum?','About 3.0 × 10^8 metres per second.',0),(24,'What happens to the resistance of a wire if its length increases while material and thickness stay the same?','Its resistance increases.',0),(25,'What is the SI unit of energy?','The joule (J).',0),(26,'What does Ohm\'s law state?','Voltage equals current times resistance (V = IR).',0),(27,'What is the atomic number of an element?','The number of protons in its nucleus.',1),(28,'What is the pH of a neutral solution at 25°C?','7.',0),(29,'What type of bond involves the sharing of electrons between atoms?','A covalent bond.',0),(30,'What is the chemical symbol for sodium?','Na.',0),(31,'Which group of elements in the periodic table is known for being very unreactive?','The noble gases.',0),(32,'What is the name of the process by which a liquid turns into a gas?','Evaporation or vaporization.',0),(33,'What does a catalyst do in a chemical reaction?','It increases the reaction rate without being used up.',0);
 /*!40000 ALTER TABLE `flashcards` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `questions` (
   `fourthAnswer` varchar(255) DEFAULT NULL,
   `correctAnswer` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (3,'Testas?','Yes','No','Sure','',3),(4,'Testas kitas?','Be sansu','O taip','','',2),(5,'Ar tiesa?','Tikrai ne','Tikiuosi','Gal','',3);
+INSERT INTO `questions` VALUES (6,'What is the capital of France?','Berlin','Madrid','Paris','Rome',3),(7,'Which language is primarily spoken in Brazil?','Spanis','Portuguese','English','French',2),(8,'What is the longest river in the world?','Amazon','Nile','Yangtze','Mississippi',2),(10,'Which planet is known as the Red Planet?','Venus','Mars','Jupiter','Mercury',2),(11,'What is the largest mammal in the world?','Elephant','Blue whale','Giraffe','Orca',2),(12,'What is the chemical symbol for gold?','Go','Hg','Fe','Au',4),(13,'What gas do plants absorb from the atmosphere?','Oxygen','Sulfur dioxide','Xenon','Carbon dioxide',4),(14,'Who wrote The Lord of The Flies?','Jane Austen','Mark Twain','William Golding','William Shakespeare',3),(15,'Who wrote Romeo and Juliet?','Robertas Petrauskas','Mao Zedong','Xi Jinping','William Shakespeare',4);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `quiz_questions` (
 
 LOCK TABLES `quiz_questions` WRITE;
 /*!40000 ALTER TABLE `quiz_questions` DISABLE KEYS */;
-INSERT INTO `quiz_questions` VALUES (5,4,1),(8,3,1),(8,4,2),(8,5,3);
+INSERT INTO `quiz_questions` VALUES (9,6,1),(9,7,2),(9,8,3),(10,10,1),(10,11,2),(10,12,3),(10,13,4),(11,14,1),(11,15,2);
 /*!40000 ALTER TABLE `quiz_questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +148,7 @@ CREATE TABLE `quiz_tags` (
 
 LOCK TABLES `quiz_tags` WRITE;
 /*!40000 ALTER TABLE `quiz_tags` DISABLE KEYS */;
-INSERT INTO `quiz_tags` VALUES (5,1),(5,2),(8,3);
+INSERT INTO `quiz_tags` VALUES (9,7),(10,8),(11,9);
 /*!40000 ALTER TABLE `quiz_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +164,7 @@ CREATE TABLE `quizzes` (
   `quizName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `quizName_UNIQUE` (`quizName`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +173,7 @@ CREATE TABLE `quizzes` (
 
 LOCK TABLES `quizzes` WRITE;
 /*!40000 ALTER TABLE `quizzes` DISABLE KEYS */;
-INSERT INTO `quizzes` VALUES (5,'1 kl'),(8,'Quiz 2');
+INSERT INTO `quizzes` VALUES (11,'Book quiz'),(9,'Geography quiz'),(10,'Science quiz');
 /*!40000 ALTER TABLE `quizzes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +213,7 @@ CREATE TABLE `tags` (
   `tag_name` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag_name` (`tag_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (1,'Chess'),(2,'Comp Sci'),(3,'Others');
+INSERT INTO `tags` VALUES (4,'Chemistry'),(6,'CS'),(7,'Geography'),(9,'Literature'),(5,'Physics'),(8,'Science');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,4 +263,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-05  9:24:43
+-- Dump completed on 2026-04-01 22:26:02
