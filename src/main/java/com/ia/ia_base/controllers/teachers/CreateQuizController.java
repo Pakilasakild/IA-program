@@ -93,7 +93,6 @@ public class CreateQuizController extends BaseController {
 
     private void onCreateQuiz() {
         String name = (quizNameField.getText() == null) ? "" : quizNameField.getText().trim();
-
         if (name.isEmpty()) {
             AlertManager.showError("Invalid quiz name", "Please enter a quiz name.");
             return;

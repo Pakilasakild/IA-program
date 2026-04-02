@@ -103,7 +103,6 @@ public class createAnswerForQuizQuestionController extends BaseController {
             return;
         }
 
-        // Require at least 2 filled answers (change to 4 if you want all required)
         if (countFilled() < 2) {
             AlertManager.showError("Too few answers", "Enter at least 2 possible answers.");
             return;
@@ -115,14 +114,12 @@ public class createAnswerForQuizQuestionController extends BaseController {
             return;
         }
 
-        // Correct answer field must not be blank
         String correctText = getAnswerText(correctIndex);
         if (correctText == null || correctText.isBlank()) {
             AlertManager.showError("Invalid correct answer", "The correct answer cannot be empty.");
             return;
         }
 
-        // ✅ FAILSAFE: compact answers (remove gaps) + remap correctIndex
         NormalizedAnswers norm = normalizeAnswersAndRemapCorrect(correctIndex);
         if (norm.correctIndex == 0) {
             AlertManager.showError("Invalid correct answer",
@@ -130,16 +127,13 @@ public class createAnswerForQuizQuestionController extends BaseController {
             return;
         }
 
-        Question question1 = new Question(
-                question.getQuestion(),
-                norm.answers[0],
-                norm.answers[1],
-                norm.answers[2],
-                norm.answers[3],
-                norm.correctIndex
-        );
+        question.setFirstAnswer(norm.answers[0]);
+        question.setSecondAnswer(norm.answers[1]);
+        question.setThirdAnswer(norm.answers[2]);
+        question.setFourthAnswer(norm.answers[3]);
+        question.setCorrectAnswer(norm.correctIndex);
 
-        questionDAO.create(question1);
+        questionDAO.create(question);
 
         AlertManager.showInfo("Success!", "Question successfully created");
         ((Stage) addQuestionAnswersBTN.getScene().getWindow()).close();

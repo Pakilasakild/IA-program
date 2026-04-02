@@ -118,11 +118,9 @@ public class RegistrationController extends BaseController {
                 case "student":
                     newUser = new StudentUser();
                     break;
-
                 case "teacher":
                     newUser = new TeacherUser();
                     break;
-
                 default:
                     AlertManager.showError("Error", "Unknown account type");
                     return;

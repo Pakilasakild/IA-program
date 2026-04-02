@@ -16,9 +16,7 @@ public class LoginController extends BaseController {
     @FXML public Button logInBTN;
     @FXML public RadioButton studentRadio;
     @FXML public RadioButton teacherRadio;
-    @FXML public Button forgotPasswordBTN;
     @FXML public Button createNewAccountBTN;
-
     @FXML private ToggleGroup accountTypeGroup;
     @FXML private TextField emailField;
     @FXML private PasswordField passwordField;
