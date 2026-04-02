@@ -6,12 +6,7 @@ import com.ia.ia_base.util.AlertManager;
 import com.ia.ia_base.util.PasswordHasher;
 import com.ia.ia_base.util.SessionManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.Objects;

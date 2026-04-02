@@ -1,9 +1,6 @@
 package com.ia.ia_base.controllers.students;
 
 import com.ia.ia_base.controllers.BaseController;
-import com.ia.ia_base.util.AlertManager;
-import com.ia.ia_base.util.SessionManager;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;

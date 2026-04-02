@@ -8,10 +8,6 @@ import com.ia.ia_base.models.TeacherUser;
 import com.ia.ia_base.models.User;
 import com.ia.ia_base.util.AlertManager;
 import com.ia.ia_base.util.PasswordHasher;
-/*
-TODO add hasher
-import com.ia.ia_base.util.PasswordHasher;
-*/
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 

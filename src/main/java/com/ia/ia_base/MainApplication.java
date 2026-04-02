@@ -2,8 +2,6 @@ package com.ia.ia_base;
 
 import com.ia.ia_base.config.AppConfig;
 import com.ia.ia_base.controllers.LoginController;
-import com.ia.ia_base.controllers.students.StudentMainController;
-import com.ia.ia_base.controllers.teachers.TeacherMainController;
 import com.ia.ia_base.database.DatabaseConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -1,7 +1,6 @@
 package com.ia.ia_base.controllers.teachers;
 
 import com.ia.ia_base.controllers.BaseController;
-import com.ia.ia_base.models.Flashcard;
 import com.ia.ia_base.models.Question;
 import com.ia.ia_base.util.AlertManager;
 import javafx.fxml.FXML;
